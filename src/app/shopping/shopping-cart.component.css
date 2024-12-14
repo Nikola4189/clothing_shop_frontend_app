@@ -1,0 +1,16 @@
+h1{
+    position: absolute;
+    top: 10%;
+    left: 45%;
+}
+
+.mat-elevation-z8{
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    width: 90%;
+}
+
+mat-table input {
+    width: 1.5rem;
+  }

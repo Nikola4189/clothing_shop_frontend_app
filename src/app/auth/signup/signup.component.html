@@ -1,0 +1,132 @@
+<section>
+
+    <form 
+        fxLayout="column" 
+        fxLayoutAlign="center center" 
+        fxLayoutGap="1rem"
+        #f="ngForm"
+        (ngSubmit)="onSubmit(f)"
+        >
+
+
+        <mat-form-field>
+            <input 
+                type="text" 
+                matInput 
+                #firstNameInp="ngModel" 
+                name="firstName" 
+                ngModel 
+                placeholder="Input your first name" 
+                required
+                >
+
+            <mat-error *ngIf="firstNameInp.hasError('required')">Field should not be empty.</mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field>
+            <input 
+                type="text" 
+                matInput 
+                #lastNameInp="ngModel" 
+                name="lastName" 
+                ngModel 
+                placeholder="Input your last name" 
+                required
+                >
+
+            <mat-error *ngIf="lastNameInp.hasError('required')">Field should not be empty.</mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field>
+            <input 
+                type="email" 
+                matInput 
+                #emailInp="ngModel" 
+                name="email" 
+                ngModel 
+                placeholder="Input your email" 
+                required
+                >
+
+            <mat-error *ngIf="emailInp.hasError('required')">Field should not be empty.</mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field>
+            <input 
+                type="password" 
+                matInput 
+                #passInp="ngModel" 
+                minlength="8" 
+                name="password" 
+                ngModel 
+                placeholder="Input your password" 
+                required
+                >
+
+            <mat-hint align="end">{{ passInp.value?.length }} / 8</mat-hint>
+
+        </mat-form-field>
+
+        <mat-form-field>
+            <input 
+                type="text" 
+                matInput 
+                #phoneInp="ngModel" 
+                minlength="10" 
+                name="phone" 
+                ngModel 
+                placeholder="Input your phone number" 
+                required
+                >
+
+            <mat-hint align="end">{{ phoneInp.value?.length }} / 10</mat-hint>
+
+        </mat-form-field>
+
+        <mat-form-field>
+            <input 
+                type="text" 
+                matInput 
+                #addressInp="ngModel" 
+                name="address" 
+                ngModel 
+                placeholder="Input your address in format: Street Number, City" 
+                required
+                >
+
+            <mat-error *ngIf="addressInp.hasError('required')">Field should not be empty.</mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field>
+            <input 
+                matInput 
+                name="birthday" 
+                ngModel 
+                [matDatepicker]="picker" 
+                placeholder="Input your date of birthday" 
+                required
+                >
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+
+        </mat-form-field>
+
+        <mat-checkbox fxLayoutGap="1rem" color="warn" ngModel name="acceptance" required>
+            I accept the terms of conditions of use.
+        </mat-checkbox>
+       
+
+        <button mat-raised-button color="warn" [disabled]="f.invalid">Submit</button>
+
+        <!-- Errors -->
+        <mat-label *ngIf="errorExists">{{ errorText }}</mat-label>
+        <a routerLink="/login">Go back to login.</a>
+
+    </form>
+
+</section>
+

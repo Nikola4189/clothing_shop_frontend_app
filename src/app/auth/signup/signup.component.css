@@ -1,0 +1,11 @@
+
+form{
+    height: 56rem;
+    border: .1rem solid #ededed;
+    background-image: url("register_background.jpeg");
+    background-color: gainsboro;
+}
+
+mat-form-field{
+    width: 400px;
+}

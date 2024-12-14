@@ -1,0 +1,53 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  mat-card {
+    flex: 0 0 calc(33% - 20px);
+    margin: 10px;
+  }
+  
+  
+
+  .filter-form {
+    min-width: 150px;
+    width: 90%;
+    margin: 10px;
+  }
+
+  
+  .filter-full-width {
+    width: 100%;
+  }
+  
+  .filter-input {
+    max-width: 100%;
+    width: 200px;
+    height: 1.5rem;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    text-align: center;
+    background-color: transparent;
+    border: 2px double rgb(167, 8, 167);
+    border-radius: 0.5rem;
+  }
+
+  mat-checkbox{
+    color: red;
+  }
+
+  mat-slider {
+    width: 12.5rem;
+  }
+
+  #reset{
+    margin-left: 1rem;
+    height: 2.3rem;
+    width: 1.2rem;
+    text-align: center;
+    justify-content: center;
+    background-color: transparent;
+    color: orange;
+  }

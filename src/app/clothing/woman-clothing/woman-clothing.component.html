@@ -1,0 +1,47 @@
+<section fxLayout fxLayoutAlign="center">
+    <mat-card fxFlex="590px">
+
+        <mat-card-title fxLayoutAlign="center">Start shoping</mat-card-title>
+
+    </mat-card>
+</section>
+
+<div class="card-container">
+    <mat-card *ngFor="let product of womanArticles">
+      
+      <mat-card-header fxLayout="column">
+        <mat-card-title>{{product.title}}</mat-card-title>
+        <mat-card-subtitle>{{product.category}}</mat-card-subtitle>
+      </mat-card-header>
+
+      <img mat-card-image [src]="product.image" alt="{{product.title}}">
+
+      <mat-card-content fxLayout="column">
+
+        <mat-form-field>
+
+            <mat-select fxLayoutAlign="space-between" placeholder="Size:">
+
+              <mat-option *ngFor="let s of product.size" [value]="s">
+
+                {{s.toLowerCase()}}
+
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        <p><strong>Manufacturer:</strong> {{product.manufacturer}}</p>
+
+        <p><strong>Date:</strong> {{product.product_date | date}}</p>
+
+        <p><strong>Price:</strong> {{product.price}}$</p>
+      </mat-card-content>
+
+      <mat-card-action fxLayoutAlign="center center" fxLayoutGap="10rem">
+        <button type="submit" mat-raised-button color="primary" (click)="onView(product.product_id)">View</button>
+        <button type="submit" mat-raised-button color="warn" [disabled]="!isReserveActive" (click)="this.action.reserve(product.product_id)">Buy</button>
+    </mat-card-action>
+
+    </mat-card>
+  </div>
+

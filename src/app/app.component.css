@@ -1,0 +1,24 @@
+a{
+    height: 2rem;
+    color: white;
+    text-decoration: none;
+}
+
+a:hover{
+    color: aquamarine;
+}
+
+mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+    height: 100%;
+}
+
+mat-sidenav{
+    width: 12rem;
+}
+
+button{
+    color: white;
+    border: .1rem solid rgba(255, 255, 255, 0.5);
+    background-color: transparent;
+}
+

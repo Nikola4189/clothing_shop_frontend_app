@@ -1,0 +1,19 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  mat-card {
+    flex: 0 0 calc(33% - 20px);
+    margin: 10px;
+  }
+  
+  img{
+    width: 24rem;
+    height: 24rem;
+    padding: .5rem;
+    position: relative;
+    left: 20%;
+    mix-blend-mode:multiply;
+  }

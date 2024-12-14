@@ -1,0 +1,111 @@
+<!-- Filter forma -->
+
+<form class="filter-form"
+      [ngStyle]="{'margin': '20px'}"
+      #f="ngForm"
+      (ngSubmit)="onSearch(f)"
+      fxLayout="row"
+      fxLayoutAlign="space-between"
+    >
+    <p>
+        <mat-checkbox labelPosition="before" [formControl]="disableSelect">Enable</mat-checkbox>
+    </p>
+
+    <!-- Selekcija vrste -->
+    <mat-form-field>
+        <mat-label>Category</mat-label>
+            <mat-select [disabled]="!disableSelect.value" [formControl]="categoryControl" name="category" fxLayoutAlign="space-between" placeholder="Category:">
+                <mat-option *ngFor="let category of categories" [value]="category">
+                    {{category.toUpperCase()}}
+                </mat-option>
+            </mat-select>
+    </mat-form-field>
+
+    <!-- Selekcija velicine -->
+    <mat-form-field>
+        <mat-label>Size</mat-label>
+            <mat-select [disabled]="!disableSelect.value" [formControl]="sizeControl" name="size" fxLayoutAlign="space-between" placeholder="Size:">
+                <mat-option *ngFor="let s of sizes" [value]="s">
+                    {{s.toUpperCase()}}
+                </mat-option>
+            </mat-select>
+    </mat-form-field>
+
+    <!-- Selekcija Brenda -->
+    <mat-form-field>
+        <mat-label>Brand</mat-label>
+            <mat-select [disabled]="!disableSelect.value" [formControl]="brandControl" name="brand" fxLayoutAlign="space-between" placeholder="Brand:">
+                <mat-option *ngFor="let brand of brands" [value]="brand">
+                    {{brand.toUpperCase()}}
+                </mat-option>
+            </mat-select>
+    </mat-form-field>
+
+     <!-- Selekcija datuma proizvodnje -->
+     <mat-form-field>
+        <mat-label>Season</mat-label>
+            <mat-select [disabled]="!disableSelect.value" [formControl]="seasonControl" name="season" fxLayoutAlign="space-between" placeholder="Season:">
+                <mat-option *ngFor="let year of years" [value]="year">
+                    {{year}}
+                </mat-option>
+            </mat-select>
+    </mat-form-field>
+
+     <!-- Selekcija prema oceni proizvoda -->
+     <mat-form-field>
+        <mat-label>Rating</mat-label>
+            <mat-select [disabled]="!disableSelect.value" [formControl]="ratingControl" name="rating" fxLayoutAlign="space-between" placeholder="Rating:">
+                <mat-option *ngFor="let rating of stars" [value]="rating">
+                    {{rating}}
+                </mat-option>
+            </mat-select>
+    </mat-form-field>
+
+    <!-- Selekcija opsega cene -->
+
+   <mat-slider min="0" max="{{max_price}}" step="5" showTickMarks discrete [displayWith]="formatLabel" [disabled]="!disableSelect.value" [formControl]="priceControl" name="price">
+        <input matSliderThumb>
+    </mat-slider>
+
+    <!-- Autocomplite search input -->
+    <section class="search" fxLayoutAlign="end" fxLayoutGap="3rem">
+        <input type="text"
+            name="search"
+            placeholder="Search for a title"
+            [formControl]="control"
+            [matAutocomplete]="auto"
+            class="filter-input">
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let title of filteredTitles | async; trackBy: trackTitle" [value]="title">
+                {{ title }}
+            </mat-option>
+        </mat-autocomplete>
+    </section>
+
+    <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Search</button>
+    <button type="reset" id="reset" [disabled]="f.invalid" (click)="resetFilters(f)" >R</button>
+    
+  </form>
+
+  <!-- Tabs -->
+<mat-tab-group>
+    <mat-tab label="Man">
+        <app-man-clothing></app-man-clothing>
+    </mat-tab>
+    <mat-tab label="Child">
+        <app-child-clothing></app-child-clothing>
+    </mat-tab>
+    <mat-tab label="Woman">
+        <app-woman-clothing></app-woman-clothing>
+    </mat-tab>
+</mat-tab-group>
+
+
+
+
+
+
+
+
+
+

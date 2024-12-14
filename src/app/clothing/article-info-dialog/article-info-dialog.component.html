@@ -1,0 +1,52 @@
+<div fxLayoutAlign="end">
+
+    <!-- Exit button -->
+    <button color="warn" mat-button [mat-dialog-close]="true">
+        <mat-icon matListIcon id="close">
+            close
+        </mat-icon>
+    </button>
+</div>
+
+<h2 mat-dialog-title>{{this.article.title}}</h2>
+<mat-dialog-content>
+    <mat-card>
+      
+        <mat-card-header fxLayout="column">
+          <mat-card-title>{{article.gender}}</mat-card-title>
+          <mat-card-subtitle>{{article.category}}</mat-card-subtitle>
+        </mat-card-header>
+  
+        <img mat-card-image [src]="article.image" alt="{{article.title}}">
+  
+        <mat-card-content fxLayout="column">
+
+          <p><strong>Rate:</strong> {{clothingService.calculateAverageRating(article.user_reviews)}}</p>
+          <p><strong>Description:</strong> {{article.description}}</p>
+
+            <mat-select fxLayoutAlign="space-between" placeholder="Size:">
+  
+              <mat-option *ngFor="let s of article.size" [value]="s">
+  
+                {{s.toUpperCase()}}
+  
+              </mat-option>
+            </mat-select>
+            
+  
+          <p><strong>Brand:</strong> {{article.manufacturer}}</p>
+  
+          <p><strong>Date:</strong> {{article.product_date | date}}</p>
+  
+          <p><strong>Price:</strong> {{article.price}}$</p>
+
+          <h2>Commentss:</h2>
+            <section *ngFor="let review of article.user_reviews ">
+              <h3>{{userService.getUserById(review.user_id).firstName}} {{userService.getUserById(review.user_id).lastName}}</h3>
+              <p><strong>{{review.comment}}</strong></p>
+            </section>
+
+        </mat-card-content>
+  
+      </mat-card>
+</mat-dialog-content>
